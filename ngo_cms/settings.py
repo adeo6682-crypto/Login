@@ -71,12 +71,8 @@ WSGI_APPLICATION = 'ngo_cms.wsgi.application'
 # DATABASE (PostgreSQL on Render)
 # -----------------------------------------------------
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',  # fallback if DATABASE_URL isn’t set
-        conn_max_age=600,  # keeps DB connection alive
-    )
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
-
 # -----------------------------------------------------
 # PASSWORD VALIDATION
 # -----------------------------------------------------
